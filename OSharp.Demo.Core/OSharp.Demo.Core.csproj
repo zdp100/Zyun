@@ -116,6 +116,10 @@
     <Compile Include="Dtos\Identity\UserDto.cs" />
     <Compile Include="Dtos\Security\EntityInfoDto.cs" />
     <Compile Include="Dtos\Security\FunctionDto.cs" />
+    <Compile Include="Dtos\Softwares\Software.cs" />
+    <Compile Include="Dtos\Systems\LoginLogDto.cs" />
+    <Compile Include="Dtos\Systems\OperateLog.cs" />
+    <Compile Include="Dtos\Systems\SystemLog.cs" />
     <Compile Include="Identity\RoleStore.cs" />
     <Compile Include="Identity\UserManager.cs" />
     <Compile Include="Identity\UserStore.cs" />
