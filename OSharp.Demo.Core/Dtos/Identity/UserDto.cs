@@ -24,7 +24,7 @@ namespace OSharp.Demo.Dtos.Identity
         /// 获取或设置 唯一用户名
         /// </summary>
         [Required, StringLength(100)]
-        public string Name { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// 获取或设置 密码
@@ -49,11 +49,24 @@ namespace OSharp.Demo.Dtos.Identity
         /// </summary>
         public bool IsLocked { get; set; }
 
+        public bool IsDeleted { get; set; }
         /// <summary>
         /// 注册IP地址
         /// </summary>
         [StringLength(15)]
         public string RegistedIp { get; set; }
-
+        /// <summary>
+        /// 注册时间
+        /// </summary>
+        public string RegistedTime { get; set; }
+        public int RoleId { get; set; }
+        /// <summary>
+        /// 账户余额
+        /// </summary>
+        public int Balance { get; set; }
+        /// <summary>
+        /// 推广返利
+        /// </summary>
+        public int Promote { get; set; }
     }
 }

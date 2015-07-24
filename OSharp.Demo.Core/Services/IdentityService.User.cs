@@ -13,12 +13,15 @@ using System.Linq.Expressions;
 using OSharp.Demo.Dtos.Identity;
 using OSharp.Demo.Models.Identity;
 using OSharp.Utility.Data;
-
+using OSharp.Utility.Extensions;
+using System.Data.Entity.Validation;
 
 namespace OSharp.Demo.Services
 {
     public partial class IdentityService
     {
+
+
         #region Implementation of IIdentityContract
 
         /// <summary>
@@ -47,7 +50,31 @@ namespace OSharp.Demo.Services
         /// <returns>业务操作结果</returns>
         public OperationResult AddUsers(params UserDto[] dtos)
         {
-            throw new NotImplementedException();
+            try
+            {
+              return UserRepository.Insert(dtos,
+                dto =>
+                {
+                    if (UserRepository.CheckExists(m => m.UserName == dto.UserName ))
+                    {
+                        throw new Exception("已存在“{0}”用户名，不能重复添加。".FormatWith(dto.UserName));
+                    }
+                },
+                (dto, entity) =>
+                {
+                   // entity.UserName=dto.UserName;
+                    return entity;
+                });
+            }
+            catch (DbEntityValidationException ex)
+            {
+               return new OperationResult(OperationResultType.Error,ex.Message);
+            }
+            catch(Exception ex)
+            {
+               return new OperationResult(OperationResultType.Error, ex.Message);
+            }
+            
         }
 
         /// <summary>
@@ -57,7 +84,7 @@ namespace OSharp.Demo.Services
         /// <returns>业务操作结果</returns>
         public OperationResult EditUsers(params UserDto[] dtos)
         {
-            throw new NotImplementedException();
+            return UserRepository.Update(dtos);
         }
 
         /// <summary>
@@ -67,7 +94,7 @@ namespace OSharp.Demo.Services
         /// <returns>业务操作结果</returns>
         public OperationResult DeleteUsers(params int[] ids)
         {
-            throw new NotImplementedException();
+            return UserRepository.Delete(ids);
         }
 
         /// <summary>

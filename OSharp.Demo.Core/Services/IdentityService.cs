@@ -16,6 +16,7 @@ using OSharp.Core;
 using OSharp.Core.Data;
 using OSharp.Demo.Contracts;
 using OSharp.Demo.Models.Identity;
+using OSharp.Utility.Logging;
 
 
 namespace OSharp.Demo.Services
@@ -25,6 +26,7 @@ namespace OSharp.Demo.Services
     /// </summary>
     public partial class IdentityService : IIdentityContract
     {
+        private static readonly ILogger Logger = LogManager.GetLogger(typeof(IdentityService));
         /// <summary>
         /// 获取或设置 组织机构信息仓储操作对象
         /// </summary>
