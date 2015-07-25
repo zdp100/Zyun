@@ -9,7 +9,7 @@ namespace OSharp.Demo.Models.Games
 {
     public class Point : EntityBase<int>
     {
-        public int Id { get; set; }
+       // public int Id { get; set; }  默认有ID，不能重复添加
         public string Name { get; set; }
         public string Map { get; set; }
         public int X { get; set; }
