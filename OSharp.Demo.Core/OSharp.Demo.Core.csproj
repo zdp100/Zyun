@@ -100,6 +100,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IGameContract.cs" />
     <Compile Include="Contracts\IIdentityContract.cs" />
     <Compile Include="Contracts\ILoggingContract.cs" />
     <Compile Include="Contracts\ISecurityContract.cs" />
@@ -111,6 +112,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dtos\DtoMappers.cs" />
+    <Compile Include="Dtos\Games\GameDto.cs" />
+    <Compile Include="Dtos\Games\MapDto.cs" />
+    <Compile Include="Dtos\Games\MemoryDto.cs" />
+    <Compile Include="Dtos\Games\PointDto.cs" />
     <Compile Include="Dtos\Identity\OrganizationDto.cs" />
     <Compile Include="Dtos\Identity\RoleDto.cs" />
     <Compile Include="Dtos\Identity\UserDto.cs" />
@@ -124,6 +129,11 @@
     <Compile Include="Identity\UserManager.cs" />
     <Compile Include="Identity\UserStore.cs" />
     <Compile Include="Identity\UserValidator.cs" />
+    <Compile Include="ModelConfigurations\Games\GameConfiguration.cs" />
+    <Compile Include="ModelConfigurations\Games\GameConfiguration.generated.cs" />
+    <Compile Include="ModelConfigurations\Games\MapConfiguration.cs" />
+    <Compile Include="ModelConfigurations\Games\MemoryConfiguration.cs" />
+    <Compile Include="ModelConfigurations\Games\PointConfiguration.cs" />
     <Compile Include="ModelConfigurations\Identity\OrganizationConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -160,6 +170,11 @@
     <Compile Include="ModelConfigurations\Infos\ArticleConfiguration.cs" />
     <Compile Include="ModelConfigurations\Security\EntityInfoConfiguration.cs" />
     <Compile Include="ModelConfigurations\Security\FunctionConfiguration.cs" />
+    <Compile Include="Models\Games\Game.cs" />
+    <Compile Include="Models\Games\GameType.cs" />
+    <Compile Include="Models\Games\Map.cs" />
+    <Compile Include="Models\Games\Memory.cs" />
+    <Compile Include="Models\Games\Point.cs" />
     <Compile Include="Models\Identity\Organization.cs" />
     <Compile Include="Models\Identity\Role.cs" />
     <Compile Include="Models\Identity\User.cs" />
@@ -169,6 +184,11 @@
     <Compile Include="Models\Identity\UserRoleMap.cs" />
     <Compile Include="Models\Infos\Atricle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GameService.cs" />
+    <Compile Include="Services\GameService.Game.cs" />
+    <Compile Include="Services\GameService.Map.cs" />
+    <Compile Include="Services\GameService.Memory.cs" />
+    <Compile Include="Services\GameService.Point.cs" />
     <Compile Include="Services\IdentityService.cs" />
     <Compile Include="Services\IdentityService.Organization.cs" />
     <Compile Include="Services\IdentityService.Role.cs" />

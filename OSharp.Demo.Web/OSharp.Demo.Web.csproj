@@ -485,7 +485,8 @@
     <Content Include="Areas\Admin\Views\Logging\SystemLogs.cshtml" />
     <Content Include="Areas\Admin\Views\Functions\Index.cshtml" />
     <Content Include="Areas\Admin\Views\EntityInfos\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Game\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Games\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Points\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OSharp.Demo.Web.pubxml" />
     <None Include="Scripts\jquery-1.11.1.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
@@ -531,11 +532,14 @@
   <ItemGroup>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminBaseController.cs" />
-    <Compile Include="Areas\Admin\Controllers\Game\GameController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Game\GamesController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\Identity\OrganizationsController.cs" />
     <Compile Include="Areas\Admin\Controllers\Identity\RolesController.cs" />
     <Compile Include="Areas\Admin\Controllers\Identity\UsersController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Game\MapsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Game\MemorysController.cs" />
+    <Compile Include="Areas\Admin\Controllers\Game\PointsController.cs" />
     <Compile Include="Areas\Admin\Controllers\Security\EntityInfosController.cs" />
     <Compile Include="Areas\Admin\Controllers\Security\FunctionsController.cs" />
     <Compile Include="Areas\Admin\Controllers\Systems\LoggingController.cs" />
@@ -549,6 +553,8 @@
     <Compile Include="ViewModels\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Maps\" />
+    <Folder Include="Areas\Admin\Views\Memorys\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Tests\" />
   </ItemGroup>

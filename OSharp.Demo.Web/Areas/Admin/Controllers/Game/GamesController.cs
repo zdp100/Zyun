@@ -1,23 +1,31 @@
-﻿using OSharp.Demo.Contracts;
+﻿using Newtonsoft.Json;
+using OSharp.Demo.Contracts;
+using OSharp.Demo.Models.Games;
+using OSharp.Utility.Data;
+using OSharp.Web.Mvc.Binders;
+using OSharp.Web.Mvc.Security;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using OSharp.Demo.Dtos.Games;
+using OSharp.Web.UI;
+using OSharp.Utility;
 namespace OSharp.Demo.Web.Areas.Admin.Controllers
 {
-    public class GameController : AdminBaseController
+    public class GamesController : AdminBaseController
     {
         /// <summary>
         /// 获取或设置 身份认证业务对象
         /// </summary>
-        public IIdentityContract IdentityContract { get; set; }
+        public IGameContract IGameContract { get; set; }
 
         #region 视力功能
 
-        [Description("组织机构-列表")]
+        [Description("游戏-列表")]
         public override ActionResult Index()
         {
             return base.Index();
@@ -25,16 +33,16 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
 
         #endregion
 
-        private class OrganizationView
+        private class GameView
         {
-            public OrganizationView(Organization org)
+            public GameView(Game org)
             {
                 Id = org.Id;
                 Name = org.Name;
                 Remark = org.Remark;
                 SortCode = org.SortCode;
                 CreatedTime = org.CreatedTime;
-                children = new List<OrganizationView>();
+                children = new List<GameView>();
             }
 
             public int Id { get; set; }
@@ -47,7 +55,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
 
             public DateTime CreatedTime { get; set; }
 
-            public ICollection<OrganizationView> children { get; set; }
+            public ICollection<GameView> children { get; set; }
         }
 
         #region Ajax功能
@@ -58,31 +66,31 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
         [Description("组织机构-列表数据")]
         public ActionResult GridData()
         {
-            Func<Organization, ICollection<Organization>, OrganizationView> getOrganizationView = null;
-            getOrganizationView = (org, source) =>
+            Func<Game, ICollection<Game>, GameView> getGameView = null;
+            getGameView = (org, source) =>
             {
-                OrganizationView view = new OrganizationView(org);
-                List<Organization> children = source.Where(m => m.TreePathIds.Length == org.TreePathIds.Length + 1
+                GameView view = new GameView(org);
+                List<Game> children = source.Where(m => m.TreePathIds.Length == org.TreePathIds.Length + 1
                     && m.TreePath.StartsWith(m.TreePath)).ToList();
-                foreach (Organization child in children)
+                foreach (Game child in children)
                 {
-                    OrganizationView childView = getOrganizationView(child, source);
+                    GameView childView = getGameView(child, source);
                     view.children.Add(childView);
                 }
                 return view;
             };
-            List<Organization> roots = IdentityContract.Organizations.Where(m => m.Parent == null).OrderBy(m => m.SortCode).ToList();
-            List<OrganizationView> datas = (from root in roots
-                                            let source = IdentityContract.Organizations.Where(m => m.TreePath.StartsWith(root.TreePath)).ToList()
-                                            select getOrganizationView(root, source)).ToList();
+            List<Game> roots = IGameContract.Games.Where(m => m.Parent == null).OrderBy(m => m.SortCode).ToList();
+            List<GameView> datas = (from root in roots
+                                    let source = IGameContract.Games.Where(m => m.TreePath.StartsWith(root.TreePath)).ToList()
+                                    select getGameView(root, source)).ToList();
             return Json(datas, JsonRequestBehavior.AllowGet);
         }
 
         [AjaxOnly]
-        [Description("组织机构-节点数据")]
+        [Description("游戏-节点数据")]
         public ActionResult NodeData()
         {
-            Func<Organization, object> getNodeData = null;
+            Func<Game, object> getNodeData = null;
             getNodeData = org =>
             {
                 dynamic node = new ExpandoObject();
@@ -96,7 +104,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
                 }
                 return node;
             };
-            List<Organization> roots = IdentityContract.Organizations.Where(m => m.Parent == null).OrderBy(m => m.SortCode).ToList();
+            List<Game> roots = IGameContract.Games.Where(m => m.Parent == null).OrderBy(m => m.SortCode).ToList();
             List<object> nodes = roots.Select(getNodeData).ToList();
             string json = JsonConvert.SerializeObject(nodes);
             return Content(json, "application/json");
@@ -108,31 +116,35 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [AjaxOnly]
-        [Description("组织机构-新增")]
-        public ActionResult Add([ModelBinder(typeof(JsonBinder<OrganizationDto>))] OrganizationDto dto)
+        [Description("游戏-新增")]
+        public ActionResult Add([ModelBinder(typeof(JsonBinder<GameDto>))] GameDto dto)
         {
             dto.CheckNotNull("dto");
-            OperationResult result = IdentityContract.AddOrganizations(dto);
+            OperationResult result = IGameContract.AddGames(dto);
             return Json(result.ToAjaxResult());
         }
 
         [HttpPost]
         [AjaxOnly]
-        [Description("组织机构-编辑")]
-        public ActionResult Edit([ModelBinder(typeof(JsonBinder<OrganizationDto>))] OrganizationDto dto)
+        [Description("游戏-编辑")]
+        public ActionResult Edit([ModelBinder(typeof(JsonBinder<GameDto>))] GameDto dto)
         {
             dto.CheckNotNull("dto");
-            OperationResult result = IdentityContract.EditOrganizations(dto);
+            OperationResult result = IGameContract.EditGames(dto);
             return Json(result.ToAjaxResult());
         }
 
         [HttpPost]
         [AjaxOnly]
-        [Description("组织机构-删除")]
-        public ActionResult Delete(int id)
+        [Description("游戏-删除")]
+        public ActionResult Delete([ModelBinder(typeof(JsonBinder<int>))] ICollection<int> ids)
         {
-            id.CheckGreaterThan("id", 0);
-            OperationResult result = IdentityContract.DeleteOrganizations(id);
+            ids.CheckNotNull("ids");
+            foreach(var id in ids)
+            {
+                id.CheckGreaterThan("id", 0);
+            }
+            OperationResult result = IGameContract.DeleteGames(ids.ToArray());
             return Json(result.ToAjaxResult());
         }
 

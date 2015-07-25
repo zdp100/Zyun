@@ -34,7 +34,7 @@ namespace OSharp.Demo.Web.Controllers
             watch.Stop();
             return Content(watch.Elapsed.TotalMilliseconds + "<br/>" + functions.ToJsonString());
 
-            return new EmptyResult();
+          //  return new EmptyResult();
         }
 
         [Description("测试-测试01")]
