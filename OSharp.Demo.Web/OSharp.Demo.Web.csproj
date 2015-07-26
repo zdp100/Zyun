@@ -487,6 +487,8 @@
     <Content Include="Areas\Admin\Views\EntityInfos\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Games\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Points\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Memorys\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Maps\Index.cshtml" />
     <None Include="Properties\PublishProfiles\OSharp.Demo.Web.pubxml" />
     <None Include="Scripts\jquery-1.11.1.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
@@ -553,8 +555,6 @@
     <Compile Include="ViewModels\TreeNode.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Maps\" />
-    <Folder Include="Areas\Admin\Views\Memorys\" />
     <Folder Include="Views\Account\" />
     <Folder Include="Views\Tests\" />
   </ItemGroup>
