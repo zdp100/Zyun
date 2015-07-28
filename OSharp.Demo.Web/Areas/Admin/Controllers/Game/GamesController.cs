@@ -63,7 +63,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
         #region 获取数据
 
         [AjaxOnly]
-        [Description("组织机构-列表数据")]
+        [Description("游戏-列表数据")]
         public ActionResult GridData()
         {
             Func<Game, ICollection<Game>, GameView> getGameView = null;
@@ -71,7 +71,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
             {
                 GameView view = new GameView(org);
                 List<Game> children = source.Where(m => m.TreePathIds.Length == org.TreePathIds.Length + 1
-                    && m.TreePath.StartsWith(m.TreePath)).ToList();
+                    && m.TreePath.StartsWith(org.TreePath)).ToList();
                 foreach (Game child in children)
                 {
                     GameView childView = getGameView(child, source);

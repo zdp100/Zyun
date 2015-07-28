@@ -73,12 +73,10 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
                     Children = new List<TreeNode>()
                     {
                         new TreeNode() { Text = "游戏管理", IconCls = "pic_37", Url = Url.Action("Index", "Games") },
-                        new TreeNode() { Text = "游戏大区管理", IconCls = "pic_41", Url = Url.Action("Index", "Areas") },
-                        new TreeNode() { Text = "游戏区服管理", IconCls = "pic_42", Url = Url.Action("Index", "Servers") },
                         new TreeNode() { Text = "游戏内存管理", IconCls = "pic_38", Url = Url.Action("Index", "Memorys") },
                         new TreeNode() { Text = "游戏地图管理", IconCls = "pic_39", Url = Url.Action("Index", "Maps") },
                         new TreeNode() { Text = "游戏坐标管理", IconCls = "pic_40", Url = Url.Action("Index", "Points") },
-                        new TreeNode() { Text = "游戏角色管理", IconCls = "pic_198", Url = Url.Action("Index", "Roles") },
+                        //new TreeNode() { Text = "游戏角色管理", IconCls = "pic_198", Url = Url.Action("Index", "Roles") },
                     }
                 },
                   new TreeNode()
