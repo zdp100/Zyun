@@ -42,6 +42,13 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
             {
                 m.Id,
                 m.Name,
+                m.X,
+                m.Y,
+                m.FindX,
+                m.FindY,
+                m.RunDistance,
+                m.Map,
+                PointType=m.PointType,
                 GameId = m.Game.Id,
                 GameName = m.Game.Name,
             });

@@ -39,6 +39,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
             {
                 m.Id,
                 m.Name,
+                m.Pointer,
                 GameId = m.Game.Id,
                 GameName = m.Game.Name,
             });

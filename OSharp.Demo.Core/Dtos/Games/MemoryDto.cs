@@ -14,9 +14,7 @@ namespace OSharp.Demo.Dtos.Games
 
         public string Name { get; set; }
 
-        public string Offset { get; set; }
-
-        public int MemoryId { get; set; }
+        public string Pointer { get; set; }
 
         public int GameId { get; set; }
         

@@ -172,7 +172,6 @@
     <Compile Include="ModelConfigurations\Security\FunctionConfiguration.cs" />
     <Compile Include="Models\Games\Game.cs" />
     <Compile Include="Models\Games\GameRole.cs" />
-    <Compile Include="Models\Games\GameType.cs" />
     <Compile Include="Models\Games\Map.cs" />
     <Compile Include="Models\Games\Memory.cs" />
     <Compile Include="Models\Games\Point.cs" />

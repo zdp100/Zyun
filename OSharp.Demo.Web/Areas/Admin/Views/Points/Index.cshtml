@@ -16,11 +16,48 @@
         columns = [[
             { field: "Id", title: "编号", width: 40, halign: "center", align: "right", sortable: true },
             {
-                field: "Name", title: "坐标名字", width: 150, sortable: true,
+                field: "Name", title: "坐标名字", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "Map", title: "所在地图", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "X", title: "X坐标", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "Y", title: "Y坐标", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "RunDistance", title: "距离", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "FindX", title: "查找X", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "FindY", title: "查找Y", sortable: true,
+                editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            },
+            {
+                field: "PointType", title: "坐标类型", sortable: true,
+                formatter: function(value,row,index){
+                    if (value==0)
+                        return "NPC坐标";
+                    if(value==1)
+                        return "怪物坐标";
+                    if(value==2)
+                        return "资源坐标";
+                    return "未知坐标";
+                },
                 editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
             }
         ]];
-
+        fitColumns = true;
         startfunction = function() {
             //导出
 
