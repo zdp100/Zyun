@@ -16,11 +16,22 @@
         { field: "Id", title: "编号", width: 40, halign: "center", align: "right", sortable: true },
         {
             field: "UserName", title: "用户名", width: 150, sortable: true,
-            editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            editor: { type: "validatebox", options: { required: true, validType: "length[1,100]" } }
         },
         {
             field: "NickName", title: "用户昵称", width: 150, sortable: true,
-            editor: { type: "validatebox", options: { required: true, validType: "length[1,50]" } }
+            editor: { type: "validatebox", options: { required: true, validType: "length[1,100]" } }
+        },
+        {
+            field: "Password", title: "用户密码", width: 150, sortable: true,
+            editor: { type: "validatebox", options: { required: true, validType: "length[1,100]" } }
+        },
+        {
+            field: "Email", title: "邮箱", width: 150, sortable: true,
+            editor: { type: "validatebox", options: { required: false, validType: "length[1,50]" } }
+        },
+        {
+            field: "RegistedIp", title: "注册IP", width: 150, sortable: true
         },
         {
             field: "IsDeleted",

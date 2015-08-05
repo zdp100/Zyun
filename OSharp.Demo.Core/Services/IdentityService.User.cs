@@ -62,7 +62,7 @@ namespace OSharp.Demo.Services
                 },
                 (dto, entity) =>
                 {
-                   // entity.UserName=dto.UserName;
+                    entity.Extend = new UserExtend() { RegistedIp=dto.RegistedIp};
                     return entity;
                 });
             }

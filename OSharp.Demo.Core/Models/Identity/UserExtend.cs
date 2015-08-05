@@ -18,8 +18,9 @@ namespace OSharp.Demo.Models.Identity
     /// 实体类——用户扩展信息
     /// </summary>
     [Description("认证-用户扩展信息")]
-    public class UserExtend : EntityBase<int>
+    public class UserExtend  : IEntity<int>
     {
+        public int Id { get; set; }
         /// <summary>
         /// 注册IP地址
         /// </summary>

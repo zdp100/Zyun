@@ -58,12 +58,40 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
         #endregion
 
         #region 功能方法
+        public ActionResult Login()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(string username,string password,string code)
+        {
+
+            return Content("登录成功!");
+        }
+        /// <summary>
+        /// 获取IP
+        /// </summary>
+        /// <returns></returns>
+        private string GetIP()
+        {
+            string ip = string.Empty;
+            if (!string.IsNullOrEmpty(System.Web.HttpContext.Current.Request.ServerVariables["HTTP_VIA"]))
+                ip = Convert.ToString(System.Web.HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"]);
+            if (string.IsNullOrEmpty(ip))
+                ip = Convert.ToString(System.Web.HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]);
+            return ip;
+        }
+
         [HttpPost]
         [AjaxOnly]
         [Description("用户-新增")]
         public ActionResult Add([ModelBinder(typeof(JsonBinder<UserDto>))] ICollection<UserDto> dtos)
         {
             dtos.CheckNotNull("dtos");
+            foreach (var ud in dtos)
+            {
+                ud.RegistedIp = GetIP();
+            }
             OperationResult result = IdentityContract.AddUsers(dtos.ToArray());
             return Json(result.ToAjaxResult(), JsonRequestBehavior.AllowGet);
         }

@@ -489,6 +489,7 @@
     <Content Include="Areas\Admin\Views\Points\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Memorys\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Maps\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Users\Login.cshtml" />
     <None Include="Properties\PublishProfiles\OSharp.Demo.Web.pubxml" />
     <None Include="Scripts\jquery-1.11.1.intellisense.js" />
     <Content Include="Scripts\easyloader.js" />
