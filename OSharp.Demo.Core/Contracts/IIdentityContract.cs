@@ -145,7 +145,13 @@ namespace OSharp.Demo.Contracts
         /// <param name="roleIds">角色编号集合</param>
         /// <returns>业务操作结果</returns>
         OperationResult SetUserRoles(int id, int[] roleIds);
-
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="loginInfo">登录信息</param>
+        /// <returns>业务操作结果</returns>
+        OperationResult Login(LoginInfo loginInfo);
+        void Logout();
         #endregion
     }
 }

@@ -30,6 +30,13 @@ namespace OSharp.Demo.Models.Identity
         /// 获取或设置 用户扩展信息
         /// </summary>
         public virtual UserExtend Extend { get; set; }
-
+        /// <summary>
+        /// 获取或设置 用户拥有的角色信息集合
+        /// </summary>
+        public virtual ICollection<Role> Roles { get; set; }
+        /// <summary>
+        /// 获取或设置 用户登录日志集合
+        /// </summary>
+        public virtual ICollection<LoginLog> LoginLogs { get; set; }
     }
 }

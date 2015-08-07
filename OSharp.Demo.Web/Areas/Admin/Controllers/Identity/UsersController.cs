@@ -20,6 +20,7 @@ using OSharp.Demo.Dtos.Identity;
 using OSharp.Web.Mvc.Binders;
 using OSharp.Utility.Data;
 using OSharp.Utility;
+using OSharp.Demo.Models.Identity;
 
 namespace OSharp.Demo.Web.Areas.Admin.Controllers
 {
@@ -58,16 +59,8 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
         #endregion
 
         #region 功能方法
-        public ActionResult Login()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Login(string username,string password,string code)
-        {
-
-            return Content("登录成功!");
-        }
+ 
+        
         /// <summary>
         /// 获取IP
         /// </summary>
@@ -114,6 +107,47 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
             ids.CheckNotNull("ids");
             OperationResult result = IdentityContract.DeleteUsers(ids.ToArray());
             return Json(result.ToAjaxResult(), JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult Login()
+        {
+            string returnUrl = Request.Params["returnUrl"];
+            returnUrl = returnUrl ?? Url.Action("Index", "Home", new { area = "" });
+             LoginInfo info = new LoginInfo
+             {
+                 ReturnUrl = returnUrl
+             };
+             return View(info);
+
+        }
+        [HttpPost]
+        public ActionResult Login(LoginInfo info)
+        {
+            try
+            {
+                OperationResult result = IdentityContract.Login(info);
+               
+                if(result.ResultType==OperationResultType.Success)
+                {
+                    return Redirect(info.ReturnUrl);
+                }
+                return View(info);
+            }catch(Exception e)
+            {
+                return View(info);
+            }
+           
+        }
+     
+        public ActionResult Logout()
+        {
+            string returnUrl = Request.Params["returnUrl"];
+            returnUrl = returnUrl ?? Url.Action("Index", "Home", new { area = "" });
+             if (User.Identity.IsAuthenticated)
+             {
+                IdentityContract.Logout();
+             }
+             return Redirect(returnUrl);
+
         }
         #endregion
     }

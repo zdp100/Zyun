@@ -17,9 +17,12 @@ namespace OSharp.Demo.ModelConfigurations.Identity
 {
     public partial class UserExtendConfiguration
     {
+        /// <summary>
+        /// 配置用户扩展信息与用户信息0:1关系
+        /// </summary>
         partial void UserExtendConfigurationAppend()
         {
-            HasRequired(m => m.User).WithRequiredDependent(n => n.Extend);
+            HasRequired(m => m.User).WithOptional(n => n.Extend);
         }
     }
 }

@@ -107,7 +107,27 @@ namespace OSharp.Demo.Services
         {
             throw new NotImplementedException();
         }
+        /// <summary>
+        /// 用户登录
+        /// </summary>
+        /// <param name="loginInfo"></param>
+        /// <returns></returns>
+        public virtual OperationResult Login(LoginInfo loginInfo)
+        {
+            User user = Users.SingleOrDefault(u=>u.UserName==loginInfo.Access||u.Email==loginInfo.Access);//用户名或邮箱登录
+            if (user == null)
+                return new OperationResult(OperationResultType.QueryNull,"指定账号的用户不存在。");
+            if (user.Password != loginInfo.Password)
+                return new OperationResult(OperationResultType.Error, "登录密码不正确。");
+            LoginLog loginLog = new LoginLog { IpAddress = loginInfo.IpAddress, User = user };
+            //To Do:写入数据库
+            return new OperationResult(OperationResultType.Success,"登录成功。",user);
+        }
 
+        public void Logout()
+        {
+           // FormsAuthentication.SignOut();
+        }
         #endregion
     }
 }

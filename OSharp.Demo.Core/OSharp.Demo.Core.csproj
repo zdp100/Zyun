@@ -134,6 +134,7 @@
     <Compile Include="ModelConfigurations\Games\MapConfiguration.cs" />
     <Compile Include="ModelConfigurations\Games\MemoryConfiguration.cs" />
     <Compile Include="ModelConfigurations\Games\PointConfiguration.cs" />
+    <Compile Include="ModelConfigurations\Identity\LoginLogConfiguration.cs" />
     <Compile Include="ModelConfigurations\Identity\OrganizationConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -146,6 +147,7 @@
     <Compile Include="ModelConfigurations\Identity\RoleConfiguration.generated.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ModelConfigurations\Identity\UserAddressConfiguration.cs" />
     <Compile Include="ModelConfigurations\Identity\UserClaimConfiguration.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -175,9 +177,13 @@
     <Compile Include="Models\Games\Map.cs" />
     <Compile Include="Models\Games\Memory.cs" />
     <Compile Include="Models\Games\Point.cs" />
+    <Compile Include="Models\Identity\LoginInfo.cs" />
+    <Compile Include="Models\Identity\LoginLog.cs" />
     <Compile Include="Models\Identity\Organization.cs" />
     <Compile Include="Models\Identity\Role.cs" />
+    <Compile Include="Models\Identity\RoleType.cs" />
     <Compile Include="Models\Identity\User.cs" />
+    <Compile Include="Models\Identity\UserAddress.cs" />
     <Compile Include="Models\Identity\UserClaim.cs" />
     <Compile Include="Models\Identity\UserExtend.cs" />
     <Compile Include="Models\Identity\UserLogin.cs" />

@@ -31,6 +31,11 @@ namespace OSharp.Demo.Models.Identity
         /// </summary>
         public bool IsLocked { get; set; }
 
+        public RoleType RoleType { get; set; }
+
+        public int RoleTypeNum { get; set; }
+
+        public virtual ICollection<User> Users { get; set; }
         /// <summary>
         /// 获取或设置 角色所属组织机构
         /// </summary>

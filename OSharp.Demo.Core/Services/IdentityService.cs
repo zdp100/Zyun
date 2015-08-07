@@ -45,6 +45,9 @@ namespace OSharp.Demo.Services
         /// <summary>
         /// 获取或设置 用户扩展信息仓储对象
         /// </summary>
-        public IRepository<UserExtend, int> UserExtendRepository { protected get; set; }
+        public IRepository<UserExtend, Int32> UserExtendRepository { protected get; set; }
+
+
+       
     }
 }

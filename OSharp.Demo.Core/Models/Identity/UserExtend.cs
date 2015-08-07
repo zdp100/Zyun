@@ -10,6 +10,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 using OSharp.Core.Data;
+using System;
+using OSharp.Utility.Data;
 
 
 namespace OSharp.Demo.Models.Identity
@@ -18,15 +20,12 @@ namespace OSharp.Demo.Models.Identity
     /// 实体类——用户扩展信息
     /// </summary>
     [Description("认证-用户扩展信息")]
-    public class UserExtend  : IEntity<int>
+    public class UserExtend :EntityBase<int>
     {
-        public int Id { get; set; }
-        /// <summary>
-        /// 注册IP地址
-        /// </summary>
         [StringLength(18)]
         public string RegistedIp { get; set; }
-
+        public string Tel { get; set; }
+        public UserAddress Address { get; set; }
         public virtual User User { get; set; }
     }
 }
