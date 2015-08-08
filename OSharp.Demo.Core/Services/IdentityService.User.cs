@@ -62,7 +62,8 @@ namespace OSharp.Demo.Services
                 },
                 (dto, entity) =>
                 {
-                    entity.Extend = new UserExtend() { RegistedIp=dto.RegistedIp};
+                    entity.Extend = new UserExtend() { RegistedIp = dto.RegistedIp, 
+                        Address = new UserAddress() { Province="亚洲",County="中国",City="厦门",Street="翔安区内厝镇蔡宅"} };
                     return entity;
                 });
             }

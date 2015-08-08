@@ -2,6 +2,7 @@
 using OSharp.Utility.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace OSharp.Demo.Models.Identity
     /// <summary>
     /// 实体类--登录日志
     /// </summary>
+    [Description("认证-登录日志")]
     public class LoginLog : EntityBase<int>, ICreatedTime
     {
         [Required]

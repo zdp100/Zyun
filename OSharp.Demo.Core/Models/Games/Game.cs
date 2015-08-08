@@ -1,6 +1,7 @@
 ﻿using OSharp.Core.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace OSharp.Demo.Models.Games
 {
+    [Description("游戏-游戏信息")]
     public class Game:EntityBase<int>, ICreatedTime
     { /// <summary>
         /// 初始化一个<see cref="Game"/>类型的新实例

@@ -7,14 +7,16 @@ using OSharp.Web.Mvc.Security;
 using OSharp.Web.UI;
 using System;
 using System.Collections.Generic;
-using System.EnterpriseServices;
+
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OSharp.Utility.Data;
 using OSharp.Utility;
+using System.ComponentModel;
 namespace OSharp.Demo.Web.Areas.Admin.Controllers
 {
+    [Description("游戏-内存管理")]
     public class MemorysController : AdminBaseController
     {
 

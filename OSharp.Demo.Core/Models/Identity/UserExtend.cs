@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using OSharp.Core.Data;
 using System;
 using OSharp.Utility.Data;
+using System.ComponentModel.DataAnnotations.Schema;
 
 
 namespace OSharp.Demo.Models.Identity
@@ -20,8 +21,12 @@ namespace OSharp.Demo.Models.Identity
     /// 实体类——用户扩展信息
     /// </summary>
     [Description("认证-用户扩展信息")]
-    public class UserExtend :EntityBase<int>
+    public class UserExtend :IEntity<int>
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
+        public int Id { get;set; }
+
         [StringLength(18)]
         public string RegistedIp { get; set; }
         public string Tel { get; set; }

@@ -1,12 +1,14 @@
 ﻿using OSharp.Core.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OSharp.Demo.Models.Games
 {
+    [Description("游戏-地图信息")]
     public class Map : EntityBase<int>
     {
         /// <summary>

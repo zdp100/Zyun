@@ -1,12 +1,14 @@
 ﻿using OSharp.Core.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace OSharp.Demo.Models.Games
 {
+    [Description("游戏-坐标信息")]
     public class Point : EntityBase<int>
     {
        // public int Id { get; set; }  默认有ID，不能重复添加

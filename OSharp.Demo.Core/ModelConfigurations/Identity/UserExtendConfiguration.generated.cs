@@ -16,8 +16,8 @@ namespace OSharp.Demo.ModelConfigurations.Identity
     /// <summary>
     /// 实体类-数据表映射——UserExtend
     /// </summary> 
-	public partial class UserExtendConfiguration : EntityConfigurationBase<UserExtend, Int32>
-    { 
+    public partial class UserExtendConfiguration : EntityConfigurationBase<UserExtend, Int32>
+    {
         /// <summary>
         /// 初始化一个<see cref="UserExtendConfiguration"/>类型的新实例
         /// </summary>

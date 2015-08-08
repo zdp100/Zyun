@@ -7,15 +7,16 @@ using OSharp.Web.Mvc.Security;
 using System;
 using System.Collections.Generic;
 using System.Dynamic;
-using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OSharp.Demo.Dtos.Games;
 using OSharp.Web.UI;
 using OSharp.Utility;
+using System.ComponentModel;
 namespace OSharp.Demo.Web.Areas.Admin.Controllers
 {
+     [Description("游戏-游戏管理")]
     public class GamesController : AdminBaseController
     {
         /// <summary>

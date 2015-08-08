@@ -157,7 +157,9 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
         [Description("管理-欢迎页")]
         public ActionResult Welcome()
         {
+            Logger.Info("访问管理欢迎页");
             return View();
+            
         }
     }
 }

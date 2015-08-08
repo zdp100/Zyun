@@ -13,11 +13,13 @@ using OSharp.Utility.Filter;
 using OSharp.Web.Mvc.Binders;
 using OSharp.Web.Mvc.Security;
 using OSharp.Web.UI;
-using System.EnterpriseServices;
+
 using OSharp.Demo.Models.Games;
 using OSharp.Demo.Dtos.Games;
+using System.ComponentModel;
 namespace OSharp.Demo.Web.Areas.Admin.Controllers
 {
+    [Description("游戏-坐标管理")]
     public class PointsController : AdminBaseController
     {
 
@@ -27,7 +29,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
 
         #region 获取数据
 
-        //id: 组织机构编号
+
         [AjaxOnly]
         [Description("坐标-列表数据")]
         public ActionResult GridData(int? id)

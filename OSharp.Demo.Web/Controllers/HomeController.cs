@@ -29,6 +29,7 @@ namespace OSharp.Demo.Web.Controllers
         public ActionResult Index()
         {
             Logger.Debug("访问首页，将转向到后台管理首页");
+            
             //return RedirectToAction("Index", "Home", new { area = "Admin" });
             //var data = new
             //{

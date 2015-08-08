@@ -119,6 +119,7 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
              return View(info);
 
         }
+        [Description("用户-登录")]
         [HttpPost]
         public ActionResult Login(LoginInfo info)
         {
@@ -131,13 +132,13 @@ namespace OSharp.Demo.Web.Areas.Admin.Controllers
                     return Redirect(info.ReturnUrl);
                 }
                 return View(info);
-            }catch(Exception e)
+            }catch
             {
                 return View(info);
             }
            
         }
-     
+        [Description("用户-登出")]
         public ActionResult Logout()
         {
             string returnUrl = Request.Params["returnUrl"];

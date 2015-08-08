@@ -4,7 +4,6 @@ using OSharp.Web.Mvc.Security;
 using OSharp.Web.UI;
 using System;
 using System.Collections.Generic;
-using System.EnterpriseServices;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,8 +12,10 @@ using OSharp.Utility;
 using OSharp.Demo.Models.Games;
 using OSharp.Web.Mvc.Binders;
 using OSharp.Demo.Dtos.Games;
+using System.ComponentModel;
 namespace OSharp.Demo.Web.Areas.Admin.Controllers
 {
+    [Description("游戏-地图管理")]
     public class MapsController : AdminBaseController
     {
         public IGameContract IGameContract { get; set; }
